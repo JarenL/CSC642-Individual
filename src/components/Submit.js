@@ -78,7 +78,7 @@ const Submit = (props) => {
       </Split>
 
       <Split>
-        <SplitContent>address</SplitContent>
+        <SplitContent>Address</SplitContent>
         <SplitContent>{address}</SplitContent>
       </Split>
       <Split>

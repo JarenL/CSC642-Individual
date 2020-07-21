@@ -57,6 +57,19 @@ const InputForm = (props) => (
               </div>
             )}
           </Field>
+          <Field
+            name="lastName"
+            component="input"
+            validate={composeValidators(required, maxLength)}
+          >
+            {({ input, meta }) => (
+              <div>
+                <label>Last Name*</label>
+                <input {...input} type="text" placeholder="Last Name" />
+                {meta.error && meta.touched && <span>{meta.error}</span>}
+              </div>
+            )}
+          </Field>
           <div>
             <label>Birthdate*</label>
             <Field
@@ -81,20 +94,7 @@ const InputForm = (props) => (
               validate={composeValidators(required, mustBeNumber)}
             />
           </div>
-          
-          <Field
-            name="lastName"
-            component="input"
-            validate={composeValidators(required, maxLength)}
-          >
-            {({ input, meta }) => (
-              <div>
-                <label>Last Name*</label>
-                <input {...input} type="text" placeholder="Last Name" />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field>
+
           <Field
             name="address"
             component="input"
