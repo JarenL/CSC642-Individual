@@ -9,14 +9,19 @@ import styled from "styled-components/macro";
 const Split = styled.div`
   // padding: 12px;
   // padding-right: 6px;
-  width: 50%;
+  width: 100%;
   display: grid;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   grid-gap: 10px;
-  border: 2px black solid
+  border: 2px black solid;
+  margin-bottom: 8px;
+  @media (min-width: 600px) {
+    font-size: 1em;
+    width: 50%;
+  }
   
 `;
 
@@ -57,6 +62,7 @@ const Submit = (props) => {
   return (
     // <Styles>
     <>
+      <h1>Results verification page {name}</h1>
       <Split>
         <SplitContent>Name</SplitContent>
         <SplitContent>{name}</SplitContent>

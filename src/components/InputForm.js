@@ -174,7 +174,7 @@ const InputForm = (props) => (
             )}
           </Field>
           <div>
-            <label>Terms and Conditions</label>
+            <label>I Agree to Terms*</label>
             <Field name="termsConditions" component="input" type="checkbox" />
           </div>
           <div className="buttons">

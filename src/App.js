@@ -10,11 +10,9 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Submit from "./components/Submit";
 
 const MapWrapper = styled.div`
-  // width: 50%;
-  // margin-left: auto;
-  // margin-right: auto;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  // justify-content: center;
+  // align-items: center;
 `;
 
 class App extends Component {
