@@ -1,58 +1,76 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
+import ButtonAppBar from "./components/AppBar";
+import InputForm from "./components/InputForm";
+import Map from "./components/Map";
+import styled from "styled-components";
+import { Route, Switch, withRouter } from "react-router-dom";
+import Submit from "./components/Submit";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+const MapWrapper = styled.div`
+  // width: 50%;
+  // margin-left: auto;
+  // margin-right: auto;
+  justify-content: center;
+  align-items: center;
+`;
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formData: {
+        firstName: "Jaren",
+        birthMonth: "1",
+        birthDay: "1",
+        birthYear: "1",
+        lastName: "Lynch",
+        zip: "94109",
+        address: "745 hyde street",
+        phoneNumber: "1122298",
+        email: "jaren.d.lynch@gmail.com",
+      },
+    };
+  }
+
+  // history = useHistory();
+  onSubmit = (data) => {
+    console.log(data);
+    this.setState({
+      formData: data,
+    });
+    this.props.history.push("/submit");
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Route component={ButtonAppBar} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            // onChange={this.handleNotifications()}
+            component={() => <InputForm submit={this.onSubmit} />}
+          />
+          <Route
+            path="/submit"
+            // onChange={this.handleNotifications()}
+            component={() => (
+              <>
+                <Submit data={this.state.formData} />
+                <MapWrapper>
+                  <Map formData={this.state.formData} />
+                </MapWrapper>
+              </>
+            )}
+          />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
